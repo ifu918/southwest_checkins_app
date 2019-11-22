@@ -12,15 +12,19 @@
       </div>
 
       <div class="col">
-        <a href="/flights/<%= @flight.id %>/edit" class="btn btn-block btn-outline-secondary">
-          Edit flight
-        </a>
+        <% if current_user == @flight.user %>
+          <a href="/flights/<%= @flight.id %>/edit" class="btn btn-block btn-sm btn-outline-secondary">
+            Edit flight
+          </a>
+        <% end %>
       </div>
 
       <div class="col">
-        <a href="/delete_flight/<%= @flight.id %>" class="btn btn-block btn-outline-secondary">
-          Delete flight
-        </a>
+        <% if current_user == @flight.user %>
+          <a href="/delete_flight/<%= @flight.id %>" class="btn btn-block btn-sm btn-outline-secondary">
+            Delete flight
+          </a>
+        <% end %>
       </div>
     </div>
 
@@ -43,7 +47,18 @@
         User
       </dt>
       <dd>
-        <%= @flight.user_id %>
+        <% if @flight.user.present? %>
+          <a href="/users/<%= @flight.user_id %>">
+            <%= @flight.user.email %>
+          </a>
+        <% end %>
+      </dd>
+
+      <dt>
+        Message sent
+      </dt>
+      <dd>
+        <%= @flight.message_sent %>
       </dd>
 
       <dt>

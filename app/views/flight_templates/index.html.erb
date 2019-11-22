@@ -41,6 +41,10 @@
         </th>
 
         <th>
+          Message sent
+        </th>
+
+        <th>
           Created at
         </th>
 
@@ -67,7 +71,15 @@
         </td>
 
         <td>
-          <%= flight.user_id %>
+          <% if flight.user.present? %>
+            <a href="/users/<%= flight.user.id %>">
+              <%= flight.user.email %>
+            </a>
+          <% end %>
+        </td>
+
+        <td>
+          <%= flight.message_sent %>
         </td>
 
         <td>
