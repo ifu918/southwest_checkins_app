@@ -4,6 +4,7 @@ class CreateFlights < ActiveRecord::Migration[5.1]
       t.text :description
       t.datetime :departure
       t.integer :user_id
+      t.boolean :message_sent
 
       t.timestamps
     end
